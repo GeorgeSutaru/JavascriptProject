@@ -104,6 +104,16 @@ th {
   <h1>Astept oferte</h1>
   </div>
 
+$("button").each(function() {
+$(this).click(function() {
+var button_value = $(this).data("value");
+$("tr").each(function() {
+if ($(this).find("input[type='radio']").is(':checked')) {
+$(this).children("td").removeClass().addClass(button_value);
+}
+});
+});
+});
 
 </body>
 </html>
