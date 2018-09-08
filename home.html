@@ -94,14 +94,14 @@ th {
     <td>GG</td>
   </tr>
 </table>
-$("button").each(function(){
-$(this).click(function(){
+("button").each(function(){
+(this).click(function(){
 var button_value =
-$(this).data("value");
-$("tr").each(function(){
+this).data("value");
+"tr").each(function(){
 
 if($(this).find("input[type='radio;]").is(':checked')){
-$(this).children("td").removeClass()/addClass(button_value);
+(this).children("td").removeClass()/addClass(button_value);
 }
 });
 });
