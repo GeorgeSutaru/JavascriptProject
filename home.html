@@ -37,7 +37,19 @@ li a:hover {
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
 </ul>
-
+<script type="text/javascript">
+function marcheaza() {
+  document.getElementById("mark");.each(function() {
+    $(this).click(function() {
+      $("tr").each(function() {
+        if ($(this).find("input[type='radio']").is(':checked')) {
+          $(this).children("td").removeClass().addClass("solved");
+        }
+      });
+    });
+  });
+}
+</script>
 
 <style>
 #Marvel {
@@ -62,20 +74,23 @@ th {
   background-color: #4CAF50;
   color: white;
 }
+.solved {
+text-decoration: line-through;
+}
 </style>
 
-<button data-value="hightlight_row_marcheaza()">Marcheaza</button>
+<button id="mark" onclick="marcheaza()">Marcheaza</button>
 
 
 <table id="Marvel">
   <tr>
-    <th scope="row"><input type="radio" class="radioBtn" name="selectRow" value="checked"/>No</th>
+    <th >No</th>
     <th>Task description</th>
     <th>Assignee</th>
   </tr>
   <tr>
     <td scope="row"><input type="radio" class="radioBtn" name="selectRow" value="checked"/>1</td>
-    <td>Create page an d configure git and heroku infrastructure</td>
+    <td class="solved">Create page an d configure git and heroku infrastructure</td>
     <td>GG</td>
   </tr>
   <tr>
@@ -100,20 +115,11 @@ th {
 
 <h2 style="text-aglin:center">Caut loc de munca</h2>
 <div class="card">
-<img src="http://digitalspyuk.cdnds.net/17/29/980x490/landscape-1500370357-1.jpg" alt="Dead" height="100" width="100" style="windth:150%">
+<img src="http://digitalspyuk.cdnds.net/17/29/980x490/landscape-1500370357-1.jpg" alt="Dead"  width="100" style="windth:150%">
   <h1>Astept oferte</h1>
   </div>
 
-$("button").each(function() {
-$(this).click(function() {
-var button_value = $(this).data("value");
-$("tr").each(function() {
-if ($(this).find("input[type='radio']").is(':checked')) {
-$(this).children("td").removeClass().addClass(button_value);
-}
-});
-});
-});
+
 
 </body>
 </html>
