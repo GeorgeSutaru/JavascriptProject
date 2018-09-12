@@ -45,8 +45,8 @@ li a:hover {
   $(this).click(function() {
     var button_value = $(this).data("value");
     $("tr").each(function() {
-      if ($(this).find("input[type='radio']").is(':checked')) {
-        $(this).children("td.description").removeClass().addClass(button_value);
+      if ($(this).find("input[type='checkbox']").is(':checked')) {
+        $(this).children("td.description").removeClass().addClass("description "+button_value);
       }
     });
   });
@@ -80,10 +80,13 @@ th {
 .solved {
 text-decoration: line-through;
 }
+.anuleaza {
+text-decoration: none;
+}
 </style>
 
 <button data-value="solved">Marcheaza</button>
-
+<button data-value="anuleaza">Anuleaza</button>
 
 <table id="Marvel">
   <tr>
@@ -92,23 +95,23 @@ text-decoration: line-through;
     <th>Assignee</th>
   </tr>
   <tr>
-    <td scope="row"><input type="radio" class="radioBtn" name="selectRow" value="checked"/>1</td>
-    <td class="description solved">Create page an d configure git and heroku infrastructure</td>
+    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>1</td>
+    <td class="description">Create page an d configure git and heroku infrastructure</td>
     <td>GG</td>
   </tr>
   <tr>
-    <td scope="row"><input type="radio" class="radioBtn" name="selectRow" value="checked"/>2</td>
+    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>2</td>
     <td class="description solved">Add table basic css</td>
     <td>MH</td>
   </tr>
   <tr>
-    <td scope="row"><input type="radio" class="radioBtn" name="selectRow" value="checked"/>3</td>
+    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>3</td>
     <td class="description solved">add button to mark issue as solved</td>
     <td>MH</td>
   </tr>
 
   <tr>
-    <td scope="row"><input type="radio" class="radioBtn" name="selectRow" value="checked"/>4</td>
+    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>4</td>
     <td class="description">add backend data support</td>
     <td>GG</td>
   </tr>
