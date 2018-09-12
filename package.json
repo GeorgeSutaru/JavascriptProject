@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GeorgeSutaru/JavascriptProject/issues"
   },
-  "homepage": "https://github.com/GeorgeSutaru/JavascriptProject#readme"
+  "homepage": "https://github.com/GeorgeSutaru/JavascriptProject#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
