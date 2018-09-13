@@ -1,5 +1,5 @@
 # JavascriptProject
-Test project for learing javascript
+Test project for learning javascript
 
 npm update
 run locally : set DEBUG=javascript-project:* & npm start
