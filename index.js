@@ -18,6 +18,7 @@ index.use(express.json());
 index.use(express.urlencoded({ extended: false }));
 index.use(cookieParser());
 index.use(express.static(path.join(__dirname, 'public', 'html')));
+index.use(express.static(path.join(__dirname, 'public', 'javascripts')));
 
 /*index.use('/', indexRouter);
 index.use('/users', usersRouter);*/
