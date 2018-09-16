@@ -68,8 +68,40 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#about">About</a></li>
 </ul>
+<h3>Formular de contact</h3>
+
+<div class="container">
+    <form >
+        <label for="fname">Nume*</label>
+        <input type="text" id="fname" name="firstname" placeholder="Numele tau.." required>
+
+        <label for="lname">Prenume*</label>
+        <input type="text" id="lname" name="lastname" placeholder="Prenumele tau.." required>
+
+        <label for="phone">Telefon</label>
+        <input type="text" id="phone" name="phonenumber" placeholder="07..">
+
+        <label for="sex">Sex*</label>
+        <select id="sex" name="sex">
+            <option value="Masculin">Masculin</option>
+            <option value="Feminin">Feminin</option>
+        </select>
+
+        <label for="town">Localitate</label>
+        <input type="text" id="town" name="town" placeholder="ex.Bucuresti" required>
+
+        <label for="email">Email*</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <br>
 
 
+        <label for="subject">Subiect*</label>
+        <textarea id="subject" name="subject" placeholder="Scrie ceva.." style="height:200px" required></textarea>
+
+        <input type="submit" value="Salveaza">
+    </form>
+</div>
 
 </body>
 </html>
