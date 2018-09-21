@@ -35,31 +35,6 @@ li a:hover {
   <li><a href="contact.html">Contact</a></li>
   <li><a href="#about">About</a></li>
 </ul>
-<script type="text/javascript">
-    window.onload=function(){
-        $("button").each(
-        function() {
-            $(this).click(function() {
-                var button_value = $(this).data("value");
-                $("tr").each(function() {
-                    if ($(this).find("input[type='checkbox']").is(':checked')) {
-                        $(this).children("td.description").removeClass().addClass("description "+button_value);
-                    }
-                });
-            });
-        });
-    }
-</script>
-<script>
-
-function cbonclick(othis) {
-  if (othis.checked == true) {
-    othis.parentNode.parentNode.style.textDecoration='line-through';
-  } else {
-    othis.parentNode.parentNode.style.textDecoration='none';
-  }
-}
-</script>
 
 <style>
 #Marvel {
@@ -88,8 +63,6 @@ th {
 
 </style>
 
-<button data-value="solved">Marcheaza</button>
-<button data-value="anuleaza">Anuleaza</button>
 <button onclick="editTable()" id="tabel">editeaza tabel</button>
 
 <table id="Marvel">
@@ -115,7 +88,7 @@ th {
   </tr>
 
   <tr>
-    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>4</td>
+    <td><input type="checkbox" onclick="cbonclick(this)"/>4</td>
     <td class="description">add backend data support</td>
     <td>GG</td>
   </tr>

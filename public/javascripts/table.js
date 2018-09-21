@@ -3,7 +3,7 @@ function editTable(){
     if (editable==true){
         $("tr").each(function() {
             $(this).children("td.description").each(function(){
-                this.innerHTML = $(this).children("textarea")[0].innerHTML;
+                this.innerHTML = $(this).children("textarea")[0].value;
             })
         });
         editable=false;
@@ -19,4 +19,12 @@ function editTable(){
         });
         editable=true;
     }
+}
+
+function cbonclick(othis) {
+  if (othis.checked == true) {
+    othis.parentNode.parentNode.style.textDecoration='line-through';
+  } else {
+    othis.parentNode.parentNode.style.textDecoration='none';
+  }
 }
