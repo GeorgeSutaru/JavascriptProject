@@ -26,8 +26,6 @@ li a:hover {
 }
 
 
-
-
 </style>
 </head>
 <body>
@@ -38,19 +36,15 @@ li a:hover {
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
 </ul>
-<script type="text/javascript">
 
-    window.onload=function(){
-  $("button").each(function() {
-  $(this).click(function() {
-    var button_value = $(this).data("value");
-    $("tr").each(function() {
-      if ($(this).find("input[type='checkbox']").is(':checked')) {
-        $(this).children("td.description").removeClass().addClass("description "+button_value);
-      }
-    });
-  });
-});
+<script>
+
+function cbonclick(othis) {
+  if (othis.checked == true) {
+    othis.parentNode.parentNode.style.textDecoration='line-through';
+  } else {
+    othis.parentNode.parentNode.style.textDecoration='none';
+  }
 }
 </script>
 
@@ -77,16 +71,9 @@ th {
   background-color: #4CAF50;
   color: white;
 }
-.solved {
-text-decoration: line-through;
-}
-.anuleaza {
-text-decoration: none;
-}
+
 </style>
 
-<button data-value="solved">Marcheaza</button>
-<button data-value="anuleaza">Anuleaza</button>
 
 <table id="Marvel">
   <tr>
@@ -95,36 +82,27 @@ text-decoration: none;
     <th>Assignee</th>
   </tr>
   <tr>
-    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>1</td>
+    <td><input type=checkbox onclick="cbonclick(this)"/>1</td>
     <td class="description">Create page an d configure git and heroku infrastructure</td>
     <td>GG</td>
   </tr>
   <tr>
-    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>2</td>
-    <td class="description solved">Add table basic css</td>
+    <td><input type="checkbox" onclick="cbonclick(this)"/>2</td>
+    <td class="description">Add table basic css</td>
     <td>MH</td>
   </tr>
   <tr>
-    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>3</td>
-    <td class="description solved">add button to mark issue as solved</td>
+    <td><input type="checkbox" onclick="cbonclick(this)"/>3</td>
+    <td class="description">add button to mark issue as solved</td>
     <td>MH</td>
   </tr>
 
   <tr>
-    <td scope="row"><input type="checkbox" name="selectRow" value="checked"/>4</td>
+    <td><input type="checkbox" onclick="cbonclick(this)"/>4</td>
     <td class="description">add backend data support</td>
     <td>GG</td>
   </tr>
 </table>
-
-
-
-<h2 style="text-aglin:center">Caut loc de munca</h2>
-<div class="card">
-<img src="http://digitalspyuk.cdnds.net/17/29/980x490/landscape-1500370357-1.jpg" alt="Dead"  width="100" style="windth:150%">
-  <h1>Astept oferte</h1>
-  </div>
-
 
 
 </body>
