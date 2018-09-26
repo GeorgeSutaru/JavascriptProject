@@ -53,6 +53,19 @@ function loadTable() {
                 var checkBox = document.createElement("INPUT");
                 checkBox.setAttribute("type", "checkbox");
                 row.append(checkBox);
+                if (record[3] == true) {
+                    checkBox.checked = true;
+                    row.style.textDecoration='line-through';
+                } else {
+                    row.style.textDecoration='none';
+                }
+                checkBox.addEventListener("click", function() {
+                    if (this.checked == true) {
+                        this.parentNode.style.textDecoration='line-through';
+                    } else {
+                        this.parentNode.style.textDecoration='none';
+                    }
+                });
                 var cellNo = document.createElement('td');
                 cellNo.className = issueClass;
                 cellNo.innerHTML = record[0];
@@ -80,10 +93,3 @@ function loadTable() {
 }
 
 loadTable();
-function cbonclick(othis) {
-  if (othis.checked == true) {
-    othis.parentNode.parentNode.style.textDecoration='line-through';
-  } else {
-    othis.parentNode.parentNode.style.textDecoration='none';
-  }
-}
