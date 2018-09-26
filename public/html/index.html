@@ -33,21 +33,6 @@ li a:hover {
   <li><a href="contact.html">Contact</a></li>
   <li><a href="#about">About</a></li>
 </ul>
-<script type="text/javascript">
-    window.onload=function(){
-        $("button").each(
-        function() {
-            $(this).click(function() {
-                var button_value = $(this).data("value");
-                $("tr").each(function() {
-                    if ($(this).find("input[type='checkbox']").is(':checked')) {
-                        $(this).children("td.description").removeClass().addClass("description "+button_value);
-                    }
-                });
-            });
-        });
-    }
-</script>
 
 <style>
 #Marvel {
@@ -73,26 +58,15 @@ th {
   background-color: #4CAF50;
   color: white;
 }
-.solved {
-text-decoration: line-through;
-}
-.anuleaza {
-text-decoration: none;
-}
+
 </style>
 
-<button data-value="solved">Marcheaza</button>
-<button data-value="anuleaza">Anuleaza</button>
 <button onclick="editTable()" id="tabel">editeaza tabel</button>
 
 <table id="Marvel">
     <script src="table.js"></script>
 </table>
 
-<h2 style="text-aglin:center">Caut loc de munca</h2>
-<div class="card">
-<img src="http://digitalspyuk.cdnds.net/17/29/980x490/landscape-1500370357-1.jpg" alt="Dead"  width="100" style="windth:150%">
-  <h1>Astept oferte</h1>
-  </div>
+
 </body>
 </html>

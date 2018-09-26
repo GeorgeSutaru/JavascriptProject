@@ -80,3 +80,10 @@ function loadTable() {
 }
 
 loadTable();
+function cbonclick(othis) {
+  if (othis.checked == true) {
+    othis.parentNode.parentNode.style.textDecoration='line-through';
+  } else {
+    othis.parentNode.parentNode.style.textDecoration='none';
+  }
+}
