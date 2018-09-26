@@ -22,11 +22,8 @@ function editTable(){
 }
 
 function loadTable() {
-
     var table = $("#Marvel");
-
     var base_url = window.location.origin;
-    var request = new XMLHttpRequest();
     $.get(base_url+'/api/issues', function (data, status) {
         // Begin accessing JSON data here
         if (status == 'success') {
@@ -44,10 +41,6 @@ function loadTable() {
             assignee.innerHTML = data.header[2];
             headerRow.append(assignee);
             data.body.forEach(record => {
-                var issueClass = "description";
-                if (record[3] == true) {
-                    issueClass = "description solved";
-                }
                 var row = document.createElement('tr');
                 table.append(row);
                 var checkBox = document.createElement("INPUT");
@@ -67,15 +60,12 @@ function loadTable() {
                     }
                 });
                 var cellNo = document.createElement('td');
-                cellNo.className = issueClass;
                 cellNo.innerHTML = record[0];
                 row.append(cellNo);
                 var description = document.createElement('td');
                 description.innerHTML = record[1];
-                description.className = issueClass;
                 row.append(description);
                 var assignee = document.createElement('td');
-                assignee.className = issueClass;
                 assignee.innerHTML = record[2];
                 row.append(assignee);
             });
