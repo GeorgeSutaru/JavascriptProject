@@ -1,7 +1,6 @@
 <html>
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="table.js"></script>
 <style>
 ul {
 list-style-type: none;
@@ -26,9 +25,8 @@ li a:hover {
   background-color: #111;
 }
 </style>
-</head>
+</head> 
 <body>
-
 <ul>
   <li><a class="active" href="index.html">Home</a></li>
    <li><a href="cleo.html">Cleo's page</a></li>
@@ -66,32 +64,7 @@ th {
 <button onclick="editTable()" id="tabel">editeaza tabel</button>
 
 <table id="Marvel">
-  <tr>
-    <th >No</th>
-    <th>Task description</th>
-    <th>Assignee</th>
-  </tr>
-  <tr>
-    <td><input type=checkbox onclick="cbonclick(this)"/>1</td>
-    <td class="description">Create page an d configure git and heroku infrastructure</td>
-    <td>GG</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" onclick="cbonclick(this)"/>2</td>
-    <td class="description">Add table basic css</td>
-    <td>MH</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" onclick="cbonclick(this)"/>3</td>
-    <td class="description">add button to mark issue as solved</td>
-    <td>MH</td>
-  </tr>
-
-  <tr>
-    <td><input type="checkbox" onclick="cbonclick(this)"/>4</td>
-    <td class="description">add backend data support</td>
-    <td>GG</td>
-  </tr>
+    <script src="table.js"></script>
 </table>
 
 
