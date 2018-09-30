@@ -32,4 +32,9 @@ router.get('/navigationBar', function(req, res) {
      });
 });
 
+router.get('/users', function(req, res) {
+    res.json({
+        users: ['GG', 'MH', 'Cleo']});
+});
+
 module.exports = router;
