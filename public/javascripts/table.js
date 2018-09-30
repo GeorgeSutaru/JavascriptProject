@@ -26,7 +26,6 @@ function loadTable() {
     var table = $("#Marvel");
 
     var base_url = window.location.origin;
-    var request = new XMLHttpRequest();
     $.get(base_url+'/api/issues', function (data, status) {
         // Begin accessing JSON data here
         if (status == 'success') {
@@ -39,7 +38,7 @@ function loadTable() {
             headerRow.append(cellNo);
             var description = document.createElement('th');
             description.innerHTML = data.header[1];
-            headerRow.append(description);
+                headerRow.append(description);
             var assignee = document.createElement('th');
             assignee.innerHTML = data.header[2];
             headerRow.append(assignee);

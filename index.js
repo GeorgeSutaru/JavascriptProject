@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public', 'html')));
 app.use(express.static(path.join(__dirname, 'public', 'javascripts')));
+app.use(express.static(path.join(__dirname, 'public', 'stylesheets')));
 
 app.use('/api', indexRouter);
 app.use('/users', usersRouter);
