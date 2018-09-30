@@ -21,6 +21,17 @@ router.get('/issues', function(req, res) {
         ]});
 });
 
+router.get('/navigationBar', function(req, res) {
+    res.json({
+        navigationBar : [
+            {name: "Home", url: "index.html"},
+            {name: "Cleo's page", url: "cleo.html"},
+            {name: "Contact", url: "contact.html"},
+            {name: "About", url: "about.html"}
+        ]
+     });
+});
+
 router.get('/users', function(req, res) {
     res.json({
         users: ['GG', 'MH', 'Cleo']});

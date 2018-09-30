@@ -52,7 +52,7 @@ function loadTable() {
             headerRow.append(cellNo);
             var description = document.createElement('th');
             description.innerHTML = data.header[1];
-            headerRow.append(description);
+                headerRow.append(description);
             var assignee = document.createElement('th');
             assignee.innerHTML = data.header[2];
             headerRow.append(assignee);
