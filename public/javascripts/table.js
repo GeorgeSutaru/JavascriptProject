@@ -9,21 +9,38 @@ function editTable(){
         editable=false;
     } else {
         $("tr").each(function() {
-                $(this).children("td.description").each(function(){
-                    var descriptionTextarea = document.createElement("textarea");
-                    var descriptionTextNode = document.createTextNode(this.innerHTML);
-                    descriptionTextarea.appendChild(descriptionTextNode);
-                    this.innerHTML = "";
-                    this.appendChild(descriptionTextarea);
-                })
-        });
-        editable=true;
+            $(this).children("td.description").each(function(){
+                var descriptionTextarea = document.createElement("textarea");
+                var descriptionTextNode = document.createTextNode(this.innerHTML);
+                descriptionTextarea.appendChild(descriptionTextNode);
+                this.innerHTML = "";
+                this.appendChild(descriptionTextarea);
+            });
+            $(this).children("td.dropdown").each(function() {
+              var dropdown = document.createElement("select");
+              this.innerHTML="";
+              this.appendChild(dropdown);
+                var base_url = window.location.origin;
+                $.get(base_url+'/api/users', function (data, status) {
+                    data.users.forEach(record => {
+                      var option = document.createElement("option");
+                      option.setAttribute("value",record);
+                      option.innerHTML=record;
+                      dropdown.appendChild(option);
+                    });
+                });
+          });
+     })
+    editable=true;
     }
 }
 
 function loadTable() {
+
     var table = $("#Marvel");
+
     var base_url = window.location.origin;
+    var request = new XMLHttpRequest();
     $.get(base_url+'/api/issues', function (data, status) {
         // Begin accessing JSON data here
         if (status == 'success') {
@@ -66,6 +83,7 @@ function loadTable() {
                 description.innerHTML = record[1];
                 row.append(description);
                 var assignee = document.createElement('td');
+                assignee.className = "dropdown";
                 assignee.innerHTML = record[2];
                 row.append(assignee);
             });
