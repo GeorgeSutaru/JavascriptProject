@@ -5,6 +5,9 @@ function editTable(){
             $(this).children("td.description").each(function(){
                 this.innerHTML = $(this).children("textarea")[0].value;
             })
+            $ (this).children("td.dropdown"). each(function() {
+            this.innerHTML = $ (this).children("select").first().find(":selected").text();
+            })
         });
         editable=false;
     } else {
@@ -17,16 +20,20 @@ function editTable(){
                 this.appendChild(descriptionTextarea);
             });
             $(this).children("td.dropdown").each(function() {
-              var dropdown = document.createElement("select");
-              this.innerHTML="";
-              this.appendChild(dropdown);
+                var dropdown = document.createElement("select");
+                var currentValue = this.innerHTML;
+                this.innerHTML = "";
+                this.appendChild(dropdown);
                 var base_url = window.location.origin;
                 $.get(base_url+'/api/users', function (data, status) {
                     data.users.forEach(record => {
-                      var option = document.createElement("option");
-                      option.setAttribute("value",record);
-                      option.innerHTML=record;
-                      dropdown.appendChild(option);
+                        var option = document.createElement("option");
+                        option.setAttribute("value",record);
+                        option.innerHTML=record;
+                        dropdown.appendChild(option);
+                        if (record == currentValue) {
+                            option.selected = 'selected';
+                        }
                     });
                 });
           });
