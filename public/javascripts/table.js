@@ -8,29 +8,30 @@ function editTable(){
         });
         editable=false;
     } else {
-        $("tr").each(function() {
-            $(this).children("td.description").each(function(){
-                var descriptionTextarea = document.createElement("textarea");
-                var descriptionTextNode = document.createTextNode(this.innerHTML);
-                descriptionTextarea.appendChild(descriptionTextNode);
-                this.innerHTML = "";
-                this.appendChild(descriptionTextarea);
+        var baseDropdown = document.createElement("select");
+        var base_url = window.location.origin;
+        $.get(base_url+'/api/users', function (data, status) {
+            data.forEach(record => {
+                var option = document.createElement("option");
+                option.setAttribute("value",record.username);
+                option.innerHTML=record.username;
+                baseDropdown.appendChild(option);
             });
-            $(this).children("td.dropdown").each(function() {
-              var dropdown = document.createElement("select");
-              this.innerHTML="";
-              this.appendChild(dropdown);
-                var base_url = window.location.origin;
-                $.get(base_url+'/api/users', function (data, status) {
-                    data.users.forEach(record => {
-                      var option = document.createElement("option");
-                      option.setAttribute("value",record);
-                      option.innerHTML=record;
-                      dropdown.appendChild(option);
-                    });
+            $("tr").each(function() {
+                $(this).children("td.description").each(function(){
+                    var descriptionTextarea = document.createElement("textarea");
+                    var descriptionTextNode = document.createTextNode(this.innerHTML);
+                    descriptionTextarea.appendChild(descriptionTextNode);
+                    this.innerHTML = "";
+                    this.appendChild(descriptionTextarea);
                 });
-          });
-     })
+                $(this).children("td.dropdown").each(function() {
+                    this.innerHTML="";
+                    var dropdown = baseDropdown.cloneNode(true);
+                    this.appendChild(dropdown);
+                });
+            });
+        });
     editable=true;
     }
 }
@@ -53,7 +54,7 @@ function loadTable() {
             headerRow.append(cellNo);
             var description = document.createElement('th');
             description.innerHTML = data.header[1];
-            headerRow.append(description);
+                headerRow.append(description);
             var assignee = document.createElement('th');
             assignee.innerHTML = data.header[2];
             headerRow.append(assignee);
@@ -63,7 +64,7 @@ function loadTable() {
                 var checkBox = document.createElement("INPUT");
                 checkBox.setAttribute("type", "checkbox");
                 row.append(checkBox);
-                if (record[3] == true) {
+                if (record.isDone == true) {
                     checkBox.checked = true;
                     row.style.textDecoration='line-through';
                 } else {
@@ -77,14 +78,15 @@ function loadTable() {
                     }
                 });
                 var cellNo = document.createElement('td');
-                cellNo.innerHTML = record[0];
+                cellNo.innerHTML = record.id;
                 row.append(cellNo);
                 var description = document.createElement('td');
-                description.innerHTML = record[1];
+                description.className = "description";
+                description.innerHTML = record.description;
                 row.append(description);
                 var assignee = document.createElement('td');
                 assignee.className = "dropdown";
-                assignee.innerHTML = record[2];
+                assignee.innerHTML = record.assignee;
                 row.append(assignee);
             });
         } else {
