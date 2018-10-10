@@ -5,6 +5,9 @@ function editTable(){
             $(this).children("td.description").each(function(){
                 this.innerHTML = $(this).children("textarea")[0].value;
             })
+            $ (this).children("td.dropdown"). each(function() {
+            this.innerHTML = $ (this).children("select").first().find(":selected").text();
+            })
         });
         editable=false;
     } else {
@@ -41,7 +44,6 @@ function loadTable() {
     var table = $("#Marvel");
 
     var base_url = window.location.origin;
-    var request = new XMLHttpRequest();
     $.get(base_url+'/api/issues', function (data, status) {
         // Begin accessing JSON data here
         if (status == 'success') {
