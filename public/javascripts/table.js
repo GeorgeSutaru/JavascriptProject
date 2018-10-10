@@ -29,9 +29,11 @@ function editTable(){
                     this.appendChild(descriptionTextarea);
                 });
                 $(this).children("td.dropdown").each(function() {
+                    var currentValue = this.innerHTML;
                     this.innerHTML="";
                     var dropdown = baseDropdown.cloneNode(true);
                     this.appendChild(dropdown);
+                    selectItemByValue(dropdown, currentValue);
                 });
             });
         });
@@ -102,6 +104,14 @@ function loadTable() {
             this.innerHTML = $(this).children("textarea")[0].value;
         })
     });
+}
+
+function selectItemByValue(elment, value){
+    for(var i=0; i < elment.options.length; i++)
+    {
+        if(elment.options[i].value == value)
+            elment.selectedIndex = i;
+    }
 }
 
 loadTable();
