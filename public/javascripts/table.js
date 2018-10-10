@@ -42,6 +42,18 @@ function editTable(){
     }
 }
 
+function addField()
+{
+    var table = $("#Marvel");
+    var numberOfRows=table.children("tr").length;
+    var row = table.get(0).insertRow(numberOfRows);
+    var checkBox = document.createElement("INPUT");
+    checkBox.setAttribute("type", "checkbox");
+    row.append(checkBox);
+    var cellNo = document.createElement('td');
+    row.append(cellNo);
+}
+
 function loadTable() {
 
     var table = $("#Marvel");
@@ -103,7 +115,6 @@ function loadTable() {
             console.log(data + ' = ' + status );
         }
     });
-
 
     $("tr").each(function () {
         $(this).children("td.description").each(function () {
