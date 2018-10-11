@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/api');
 var usersRouter = require('./routes/users');
+var database = require('./public/javascripts/database.js');
 
 var app = express();
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public', 'html')));
 app.use(express.static(path.join(__dirname, 'public', 'javascripts')));
+app.use(express.static(path.join(__dirname, 'public', 'stylesheets')));
 
 app.use('/api', indexRouter);
 app.use('/users', usersRouter);
