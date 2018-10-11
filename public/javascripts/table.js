@@ -9,8 +9,10 @@ function editTable(){
             this.innerHTML = $ (this).children("select").first().find(":selected").text();
             })
         });
-        editable=false;
+      $('#hide').css('visibility','hidden');
+      editable=false;
     } else {
+        $('#hide').css('visibility','visible');
         var baseDropdown = document.createElement("select");
         var base_url = window.location.origin;
         $.get(base_url+'/api/users', function (data, status) {
@@ -40,6 +42,50 @@ function editTable(){
     editable=true;
     }
 }
+
+function addField()
+{
+    var table = $("#Marvel");
+    var numberOfRows=table.children("tr").length;
+    var row = table.get(0).insertRow(numberOfRows);
+    var checkBox = document.createElement("INPUT");
+    checkBox.setAttribute("type", "checkbox");
+    row.append(checkBox);
+    checkBox.addEventListener("click", function() {
+        if (this.checked == true) {
+            this.parentNode.style.textDecoration='line-through';
+        } else {
+            this.parentNode.style.textDecoration='none';
+        }
+    });
+    var cellNo = document.createElement('td');
+    row.append(cellNo);
+    var descriere = document.createElement('td');
+    descriere.className="description";
+    row.append(descriere);
+    var descriptionTextarea = document.createElement("textarea");
+    var descriptionTextNode = document.createTextNode(descriere.innerHTML);
+    descriptionTextarea.appendChild(descriptionTextNode);
+    descriere.innerHTML = "";
+    descriere.appendChild(descriptionTextarea);
+    var baseDropdown = document.createElement("select");
+    var base_url = window.location.origin;
+    $.get(base_url+'/api/users', function (data, status) {
+        var asignee = document.createElement('td');
+        row.append(asignee);
+        asignee.className = "dropdown";
+        data.forEach(record => {
+            var option = document.createElement("option");
+            option.setAttribute("value",record.username);
+            option.innerHTML=record.username;
+            baseDropdown.appendChild(option);
+            asignee.appendChild(baseDropdown);
+        });
+    });
+}
+
+
+
 
 function loadTable() {
 
@@ -97,7 +143,6 @@ function loadTable() {
             console.log(data + ' = ' + status );
         }
     });
-
 
     $("tr").each(function () {
         $(this).children("td.description").each(function () {
